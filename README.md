@@ -1,2 +1,5 @@
-# DailyNotes
-一些笔记
+# JavaScript
+# CSS
+# Vue
+# Browser
+# Notes
