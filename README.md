@@ -264,9 +264,9 @@ console.log(Object.keys(person1))//name,age
             (Object||Person||Friend).prototype.isPrototypeOf(one)//true
     - 原型链的问题
       - 引用类型值的共享
-      - 在创建子类型的实例时，不能向超类型的构造函数中传递参数
+      - 在创建子类型的实例时，不能向父类型的构造函数中传递参数
       - 破坏子类型的原型链，constructor指向
-- 借用构造函数（在子类型构造函数的内部调用超类型构造函数）
+- 借用构造函数（在子类型构造函数的内部调用父类型构造函数）
  
   解决原型中包含引用类型值所带来问题的过程
     ```javascript
@@ -284,10 +284,12 @@ console.log(Object.keys(person1))//name,age
 
     - 问题
         - 方法都在构造函数中定义，复用性差
-        - 超类型的原型中定义的方法，对子类型而言也是不可见
+        - 父类型的原型中定义的方法，对子类型而言也是不可见
 - 组合继承（伪经典继承）
   
   使用原型链实现对原型属性和方法的继承，而通过借用构造函数来实现对实例属性的继承,避免了原型链和借用构造函数的缺陷，融合了它们的优点，成为JavaScript中最常用的继承模式。而且，instanceof和isPrototypeOf()也能够用于识别基于组合继承创建的对象。
+
+  无论什么情况下，都会调用两次父类型构造函数：一次是在创建子类型原型的时候，另一次是在子类型构造函数内部。
     ```javascript
     function Person(name){
         this.name = name
@@ -318,7 +320,108 @@ console.log(Object.keys(person1))//name,age
     one2.sayName()//ggg
     one2.sayAge()//10
     ```
+- 原型式继承
+  
+  必须有一个对象可以作为另一个对象的基础
 
+  适用于想让一个对象与另一个对象保持类似，不必创建构造函数
+
+  Object.create()方法的第二个参数与Object.defineProperties()方法的第二个参数格式相同：每个属性都是通过自己的描述符定义的。以这种方式指定的任何属性都会覆盖原型对象上的同名属性。
+
+  引用类型会共享值
+  ```javascript
+    //object()对传入其中的对象执行了一次浅复制
+    function Object(o){
+        function F(){}
+        F.prototype = o
+        return o
+    }//Object.create
+
+    var person = {
+        name:'jack',
+        friends:['a','b','c']
+    }
+    var personOne = Object.create(person)
+    // 等价 var personOne = Object(person)
+    personOne.name = 'mark'
+    personOne.friends.push('d')
+
+    var personTwo = Object.create(person,{
+        name:{
+            value:'hahaha'
+        }
+    })
+    var personTwo = Object.create(person)
+    personTwo.name = 'john'
+    personTwo.friends.push('e')
+    console.log(person.friends)//['a','b','c','d','e']
+  ```
+- 寄生式继承
+
+  主要考虑对象而不是自定义类型和构造函数的情况下，寄生式继承也是一种有用的模式
+
+  使用寄生式继承来为对象添加函数，会由于不能做到函数复用而降低效率；这一点与构造函数模式类似。
+  
+  ```javascript
+    //object()对传入其中的对象执行了一次浅复制
+    function object(o){
+        function F(){}
+        F.prototype = o
+        return o
+    }
+
+    function createPerson(o){
+        var clone = object(o)
+        clone.sayHi = function(){
+            console.log('hi')
+        }
+        return clone
+    }
+
+    var person = {
+        name:'jack',
+        friends:['a','b','c']
+    }
+    var another = createPerson(person)
+    another.sayHi()//hi
+  ```
+- 寄生组合式继承
+  
+  通过借用构造函数来继承属性，通过原型链的混成形式来继承方法。
+  
+  基本思路是：不必为了指定子类型的原型而调用父类型的构造函数，我们所需要的无非就是父类型原型的一个副本而已。本质上，就是使用寄生式继承来继承父类型的原型，然后再将结果指定给子类型的原型
+
+  避免了在Person.prototype上面创建不必要的、多余的属性,原型链保持不变。
+  ```javascript
+    //Object()对传入其中的对象执行了一次浅复制
+    function Object(o){
+        function F(){}
+        F.prototype = o
+        return o
+    }
+    function inheritPrototype(Person,Friend){
+        var newObj = Object(Person.prototype) //复制父类Person的原型对象
+        newObj.constructor = Friend //constructor指向子类构造函数
+        Friend.prototype = newObj //再把这个对象给子类的原型对象
+    }
+
+    function Person(name){
+        this.name = name
+        this.colors = ['red','green','yellow']
+    }
+    Person.prototype.sayName = function(){
+        console.log(this.name)
+    }
+
+    function Friend(name,age){
+        Person.call(this,name)
+        this.age = age
+    }
+    inheritPrototype(Person,Friend)
+    Friend.prototype.sayAge = function(){
+        console.log(this.age)
+    }
+  ```
 # Css
 # Vue
 # Browser
