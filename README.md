@@ -10,6 +10,7 @@
   - [数据属性和访问器属性](#数据属性和访问器属性)
   - [对象和构造函数](#对象和构造函数)
   - [继承](#继承)
+  - [闭包](#闭包)
 - [Css](#css)
 - [Vue](#vue)
 - [Browser](#browser)
@@ -37,12 +38,12 @@ function setName(obj){
 }
 var person = new Object()
 setName(person)
-console.log(person.name)//nike
+console.log(person.name)//nike1
 ```
 ## 检测类型
 typeof操作符是确定一个变量是字符串、数值、布尔值，还是undefined的最佳工具，变量为对象或者null,都会返回object。
 
-根据规定，所有引用类型的值都是Object的实例。因此，在检测一个引用类型值和Object构造函数时，instanceof操作符始终会返回true。当然，如果使用instanceof操作符检测基本类型的值，则该操作符始终会返回false，因为基本类型不是对象。
+根据规定，所有引用类型的值都是Object的实例。因此，在检测一个引用类型值和Object构造函数时，instanceof操作符始终会返回true。当然，如果使用instanceof操作符检测基本类型的值，则该操作符始终会返回false，因为基本类型不是对象。、
 ## 垃圾清除
 - 标记清除
  
@@ -422,6 +423,69 @@ console.log(Object.keys(person1))//name,age
         console.log(this.age)
     }
   ```
+## 闭包
+
+闭包是指有权访问另一个函数作用域中的变量的函数
+
+当某个函数被调用时，会创建一个执行环境和作用域链。然后使用arguments和其它命名参数的值来初始化函数的活动对象。但在作用域链中，外部函数的活动对象始终处于第二位，外部函数的外部函数的活动对象处于第三位，……直至作为作用域链终点的全局执行环境。
+
+```javascript
+    function parent(name){
+        return function(obj1,obj2){
+            var value1 = obj1[name]
+            var value2 = obj2[name]
+            if(value1 < value2){
+                return 1
+            }else{
+                return 2
+            }
+        }
+    }
+
+    function compare(obj1,obj2){
+        var value1 = obj1[name]
+        var value2 = obj2[name]
+        if(value1 < value2){
+            return 1
+        }else{
+            return 2
+        }
+    }
+```
+当创建compare函数时，会创建预先包含全局变量对象的作用域链，作用域链被保存在[[Scope]]属性中。
+
+当执行函数时，会为函数创建一个执行环境，然后复制函数[[Scope]]属性中的对象构建执行环境的作用域链。
+
+此后，又有一个活动对象（在此作为变量对象使用）被创建并被推入执行环境作用域链的前端。
+
+对于这个例子中compare()函数的执行环境而言，其作用域链中包含两个变量对象：本地活动对象和全局变量对象。显然，作用域链本质上是一个指向变量对象的指针列表，它只引用但不实际包含变量对象。
+
+无论什么时候在函数中访问一个变量时，就会从作用域链中搜索具有相应名字的变量。一般来讲，当函数执行完毕后，局部活动对象就会被销毁，内存中仅保存全局作用域（全局执行环境的变量对象）。但是，闭包的情况又有所不同。
+
+parent()内创建的匿名函数会将parent()的活动对象添加到匿名函数的作用域链中，在匿名函数被返回后，作用域链初始化为parent()的活动对象和全局变量对象。parent()执行完毕后,其活动对象也不会被销毁，因为匿名函数的作用域链仍然在引用这个活动对象。换句话说，当parent()函数返回后，其执行环境的作用域链会被销毁，但它的活动对象仍然会留在内存中；直到匿名函数被销毁后，parent()的活动对象才会被销毁。
+
+闭包会导致内存泄漏，需要手动释放
+
+模仿块级作用域（函数立即执行表达式）可以减少闭包占用的内存问题，因为没有指向匿名函数的引用。只要函数执行完毕，就可以立即销毁其作用域链了。//(function(){ })()
+
+```javascript
+var compareName = parent('name')
+/*此时compareName = function(obj1,obj2){
+                        var value1 = obj1[name]
+                        var value2 = obj2[name]
+                        if(value1 < value2){
+                            return 1
+                        }else{
+                            return 2
+                        }
+                    }
+*/
+var result = compareName({name:1},{name:2})
+compareName = null//释放内存
+```
+
+
+
 # Css
 # Vue
 # Browser
