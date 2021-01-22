@@ -11,6 +11,9 @@
   - [对象和构造函数](#对象和构造函数)
   - [继承](#继承)
   - [闭包](#闭包)
+  - [FormData 文件上传](#formdata-文件上传)
+    - [切割字符串](#切割字符串)
+  - [深拷贝与浅拷贝](#深拷贝与浅拷贝)
 - [Css](#css)
 - [Vue](#vue)
 - [Browser](#browser)
@@ -43,7 +46,7 @@ console.log(person.name)//nike1
 ## 检测类型
 typeof操作符是确定一个变量是字符串、数值、布尔值，还是undefined的最佳工具，变量为对象或者null,都会返回object。
 
-根据规定，所有引用类型的值都是Object的实例。因此，在检测一个引用类型值和Object构造函数时，instanceof操作符始终会返回true。当然，如果使用instanceof操作符检测基本类型的值，则该操作符始终会返回false，因为基本类型不是对象。、
+根据规定，所有引用类型的值都是Object的实例。因此，在检测一个引用类型值和Object构造函数时，instanceof操作符始终会返回true。当然，如果使用instanceof操作符检测基本类型的值，则该操作符始终会返回false，因为基本类型不是对象。
 ## 垃圾清除
 - 标记清除
  
@@ -468,6 +471,10 @@ parent()内创建的匿名函数会将parent()的活动对象添加到匿名函�
 
 模仿块级作用域（函数立即执行表达式）可以减少闭包占用的内存问题，因为没有指向匿名函数的引用。只要函数执行完毕，就可以立即销毁其作用域链了。//(function(){ })()
 
+应用场景
+- 访问函数内部参数
+- 变量永久保存
+- 函数在执行前要为执行的函数提供具体参数
 ```javascript
 var compareName = parent('name')
 /*此时compareName = function(obj1,obj2){
@@ -483,9 +490,85 @@ var compareName = parent('name')
 var result = compareName({name:1},{name:2})
 compareName = null//释放内存
 ```
+## FormData 文件上传
+```javascript
+document.getElementById("upJS").onclick = function() {
+    /* FormData是表单数据类 */
+    Var fd = new FormData();
+    var ajax = new XMLHttpRequest();
+    fd.append("upload", 1);
+    /* 把文件添加到表单里 */
+    fd.append("upfile", document.getElementById("upfile").files[0]);
+    ajax.open("post", "test.php", true);  //true异步提交
 
+    ajax.onload = function () {
+        console.log(ajax.responseText);
+    };
+    ajax.send(fd);
+    /*如果是post请求，那么在调用send方法之前，要设置请求头。
+    xhr.setRequestHeader("Content-type","Application/x-www-form-urlencoded");*/
+}
 
-
+$('#upJQuery').on('click', function() {
+    varfd = new FormData();
+    fd.append("upload", 1);
+    fd.append("upfile", $("#upfile").get(0).files[0]);
+        $.ajax({
+        url: "test.php",
+        type: "POST",
+        processData: false,//不处理发送的数据，因为data值是FormData对象，不需要对数据做处理,默认为true,会将发送的数据序列化以适应默认的内容类型application/x-www-form-urlencoded
+        contentType: false,//不设置Content-type请求头  
+        data: fd,
+        success: function(d) {
+            console.log(d);
+        }
+    });
+});
+```
+### 切割字符串
+- slice从已有的数组中返回选定的元素
+  ```javascript
+  'abcde'.slice(1,3);//bc			
+  'abcde'.slice(1,-1);//bcd
+  ```
+- split把一个字符串分割成字符串数组
+  ```javascript
+  //参数2为返回数组长度
+  "abcdef".split("c"); //['ab','def']		
+  "abcdef".split("c",1); //['ab']
+  ```
+- substr在字符串中抽取从start下标开始的指定数目的字符
+  ```javascript
+  //参数2为长度
+  'abcde'.substr(1,2); //bc  
+  ```
+- substring提取字符串中介于两个指定下标之间的字符
+  ```javascript
+  //参数均为非负整数
+  'abcde'.substring(1,3) //bc
+  ```
+## 深拷贝与浅拷贝
+- Object.assign()//嵌套对象浅拷贝，非嵌套为深拷贝
+- JSON.stringify()//破坏原型链，且无法拷贝属性值为function和RegExp
+- concat()、slice()//只能是一维数组，内部为引用类型则还是浅拷贝
+- 递归拷贝
+  ```javascript
+  var json1 = {"name":"shauna","age":18,"arr1":[1,2,3,4,5],"string":'got7',"arr2":[1,2,3,4,5],"arr3":[{"name1":"shauna"},{"job":"web"}]};
+  var json2 = {};
+  function copy(obj1,obj2){
+    var obj2 = obj2 || {};
+    for(var name in obj1){
+        if(typeof obj1[name] === "object"){ 
+            obj2[name] = (obj1[name].constructor === Array) ? [] : {}; 
+            copy(obj1[name],obj2[name]); 
+        }else{
+            obj2[name] = obj1[name];  
+        }
+    }
+    return obj2;
+  }
+  json2 = copy(json1,json2)
+  ```
 # Css
 # Vue
 # Browser
