@@ -6,18 +6,31 @@
   - [Function类型](#function类型)
   - [传递参数](#传递参数)
   - [检测类型](#检测类型)
+    - [typeof obj === 'object'判断obj是对象的弊端？如何改进？](#typeof-obj--object判断obj是对象的弊端如何改进)
   - [垃圾清除](#垃圾清除)
   - [数据属性和访问器属性](#数据属性和访问器属性)
   - [对象和构造函数](#对象和构造函数)
   - [继承](#继承)
   - [闭包](#闭包)
   - [FormData 文件上传](#formdata-文件上传)
-    - [切割字符串](#切割字符串)
+  - [切割字符串](#切割字符串)
   - [深拷贝与浅拷贝](#深拷贝与浅拷贝)
+  - [for……in和for……of](#forin和forof)
 - [Css](#css)
+  - [BFC](#bfc)
+  - [圣杯布局与双飞翼布局](#圣杯布局与双飞翼布局)
+    - [圣杯布局](#圣杯布局)
+    - [双飞翼布局](#双飞翼布局)
 - [Vue](#vue)
+- [Http](#http)
+  - [三次握手和四次挥手](#三次握手和四次挥手)
 - [Browser](#browser)
+  - [浏览器渲染](#浏览器渲染)
+    - [工作流程](#工作流程)
+    - [回流和重绘](#回流和重绘)
+    - [性能优化策略](#性能优化策略)
 - [Notes](#notes)
+  - [滑动穿透事件](#滑动穿透事件)
 ---
 
 
@@ -47,6 +60,32 @@ console.log(person.name)//nike1
 typeof操作符是确定一个变量是字符串、数值、布尔值，还是undefined的最佳工具，变量为对象或者null,都会返回object。
 
 根据规定，所有引用类型的值都是Object的实例。因此，在检测一个引用类型值和Object构造函数时，instanceof操作符始终会返回true。当然，如果使用instanceof操作符检测基本类型的值，则该操作符始终会返回false，因为基本类型不是对象。
+
+### typeof obj === 'object'判断obj是对象的弊端？如何改进？
+```javascript
+var  obj = {};
+var  arr = [];
+var funcInstance = new (function (){});  
+var isNull = null;
+ 
+console.log(typeof obj === 'object');  //true
+console.log(typeof arr === 'object');  //true
+console.log(typeof funcInstance === 'object');  //true
+console.log(typeof isNull === 'object');    // true
+ 
+// constructor
+({}).constructor === Object;  //true
+([]).constructor === Array;  //true
+ 
+// instanceof
+({}) instanceof Object;  //true
+([]) instanceof Array;   //true
+ 
+// toString: 将当前对象以字符串的形式返回
+console.log(Object.prototype.toString.call(obj));  //[object Object]
+console.log(Object.prototype.toString.call(arr));  //[object Array]
+console.log(Object.prototype.toString.call(null));  //[object Null]
+```
 ## 垃圾清除
 - 标记清除
  
@@ -525,7 +564,7 @@ $('#upJQuery').on('click', function() {
     });
 });
 ```
-### 切割字符串
+## 切割字符串
 - slice从已有的数组中返回选定的元素
   ```javascript
   'abcde'.slice(1,3);//bc			
@@ -569,7 +608,222 @@ $('#upJQuery').on('click', function() {
   }
   json2 = copy(json1,json2)
   ```
+## for……in和for……of
+- for……in
+    - 循环输出key
+    - 可以遍历自定义属性
+    - 遍历可枚举属性，包括原型
+- for……of
+    - 循环输出value
+    - 可通过Object.key()遍历普通对象
+    ```javascript
+    var student={
+        name:'wujunchuan',
+        age:22,
+        locate:{
+            country:'china',
+            city:'xiamen',
+            school:'XMUT'
+        }
+    }
+    for(var key of Object.keys(student)){
+        //使用Object.keys()方法获取对象key的数组
+        console.log(key+": "+student[key]);
+    }// name: wujunchuan    age: 22    locate: [object Object]
+    ```
 # Css
+## BFC
+BFC(Block formatting context)直译为"块级格式化上下文"。它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。
+
+BFC的布局规则：
+- 内部的Box会在垂直方向，一个接一个地放置。
+- Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠。
+- 每个盒子（块盒与行盒）的margin box的左边，与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。
+- BFC的区域不会与float box重叠。
+- BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。
+- 计算BFC的高度时，浮动元素也参与计算。
+
+形成BFC的条件：
+- float除none以外
+- 绝对定位元素（absolute，fixed）
+- display为以下之一inline-block，table-cell，table-captions，flex，inline-flex
+- overflow：除visible以外（auto，hidden，scroll）
+  
+场景应用：
+- 自适应两栏布局（规则1,4）
+- 清除内部浮动（规则6）
+- 防止垂直margin重叠（规则2）
+## 圣杯布局与双飞翼布局
+圣杯布局和双飞翼布局解决的问题是相同的，就是两边顶宽，中间自适应的三栏布局，中间栏要在放在文档流前面以优先渲染。
+### 圣杯布局
+优点：不需要添加dom节点
+
+缺点：圣杯布局的缺点：正常情况下是没有问题的，但是特殊情况下就会暴露此方案的弊端，如果将浏览器无线放大时，「圣杯」将会「破碎」掉。如图：当middle部分的宽小于left部分时就会发生布局混乱。（middle<left即会变形）
+```html
+<html>
+	<head>
+        <style>
+            #container {
+                height: 100%;
+                padding-left: 200px; 
+                padding-right: 150px;
+                background-color: gray;
+            }
+            #container .column {
+                float: left;
+                height: 100%;
+            }
+            #center {
+                background-color: red;
+                width: 100%;
+            }
+            #left {
+                background-color: yellow;
+                width: 200px; 
+                margin-left: -100%;
+                position: relative;
+                left: -200px;
+            }
+            #right {
+                background-color: green;
+                width: 150px; 
+                margin-left: -150px;
+                position: relative;
+                right: -150px;
+            }
+    </style>
+	</head>
+	<body class="">
+        <div id="container">
+            <div id="center" class="column">中间</div>
+            <div id="left" class="column">左侧</div>
+            <div id="right" class="column">右侧</div>
+        </div>
+	</body>
+
+</html>
+```
+### 双飞翼布局
+优点：不会像圣杯布局那样变形
+
+缺点：多加了一层dom节点
+```html
+<!DOCTYPE>
+<html>
+	<head>
+		<title></title>
+        <style>
+            body {
+                min-width: 500px;
+            }
+            .column {
+                float: left;
+                height: 100%;
+            }
+            #container {
+                width: 100%;
+                background-color: gray;
+                height: 100%;
+            }
+            #center {
+                background-color: red;
+                margin-left: 200px;
+                margin-right: 150px;
+                height: 100%;
+            }
+            #left {
+                background-color: yellow;
+                width: 200px; 
+                margin-left: -100%;
+            }
+            #right {
+                background-color: green;
+                width: 150px; 
+                margin-left: -150px;
+            }
+    </style>
+	</head>
+	<body>
+        <div id="container"  class="column">
+            <div id="center">中间</div>
+        </div>
+        <div id="left" class="column">左侧</div>
+        <div id="right" class="column">右侧</div>
+	</body>
+</html>
+```
 # Vue
+# Http
+## 三次握手和四次挥手
+- 客户端发送syn请求。并包含自己的初始序号a
+- 服务端收到syn后会回复一个的syn，同时包含对上个a回复的ack，回应的序号是希望收到下一个包的序号a+1，还有自己的初始序号b
+- 客户端收到回应的syn后，回复一个ack回应，其中包含了下一个希望收到的序号b+1
+
+- 客户端提出关闭请求发送一个fin，序号为a
+- 服务器收到fin，并返回一个ack，序号为a+1
+- Tcp服务器还会发送一个文件结束符，然后服务器关闭连接，tcp端发送一个fin
+- 客户端发送确认，并将序列号设置为收到的序号加1
+
+当Server端收到Client端的SYN连接请求报文后，可以直接发送SYN+ACK报文。其中ACK报文是用来应答的，SYN报文是用来同步的。但是关闭连接时，当Server端收到FIN报文时，很可能并不会立即关闭SOCKET，所以只能先回复一个ACK报文，告诉Client端，"你发的FIN报文我收到了"。只有等到我Server端所有的报文都发送完了，我才能发送FIN报文，因此不能一起发送。故需要四步握手。
+
 # Browser
+## 浏览器渲染
+### 工作流程
+构建DOM->构建CSSOM->构建渲染树->布局->绘制
+
+CSSOM会阻塞渲染，只有当CSSOM构建完毕后才会进入下一个阶段构建渲染树
+### 回流和重绘
+1. 重绘：对dom修改导致样式变化，未影响集合属性（位置、尺寸），浏览器不需要重新计算，直接绘制行的样式
+2. 回流：改变了几何属性，将计算的结果重新绘制
+   
+   触发回流的条件：
+   - 添加或者删除可见的DOM元素
+   - 元素尺寸改变（边距、填充、边框、宽高）
+   - 内容变化（eg：input输入文字）
+   - 浏览器窗口尺寸改变（resize事件）
+   - 计算offsetWidth和offsetHeight属性
+   - 设置style属性的值
+  
+   如何减少回流和重绘：
+   - 使用transform替代top
+   - 使用visibility替换display：none
+   - 不把节点的属性值放在循环里当成循环里面的变量
+   For(){console.log(document……。offsettop)} offsettop获取正确的值导致回流
+   - 不使用table布局，小改动会导致整个table布局
+   - 动画实现速度的选择，速度越快回流越多，可以使用requestAnimationFrame
+   - Css选择符从右往左匹配查找，避免节点层级过多
+   - 将频繁重绘回流的节点设置为图层，图层可以阻止该节点渲染行为影响别的节点（如video标签，浏览器会自动将该节点变为图层）
+
+### 性能优化策略
+- css优化
+
+    link标签的rel属性中属性值设置为preload能够让HTML页面中可以指明哪些资源是在页面加载完成后即刻需要的，足以有的配置加载顺序，提高渲染性能。
+
+- js优化
+  
+    script标签加上defer属性和async属性用于在不阻塞页面文档解析的前提下，控制脚本的下载和执行
+    ![](https://github.com/LiuYJia/DailyNotes/images/defer_async.png "defer_async")
+
 # Notes
+## 滑动穿透事件
+禁用body的滚动条，由于滚动条的位置会丢失，所以需要在展示弹窗之前保存滚动条的位置，隐藏弹窗时恢复滚动条的位置。
+```javascript
+.modal-open {
+    position:fixed;
+    height: 100%;
+}   
+var ModalHelper = (function(bodyCls) {
+    var scrollTop;
+    return {
+        afterOpen: function() {
+            scrollTop = document.scrollingElement.scrollTop;
+            document.body.classList.add(bodyCls);
+            document.body.style.top = -scrollTop + 'px';
+        },
+        beforeClose: function() {
+            document.body.classList.remove(bodyCls);
+            document.scrollingElement.scrollTop = scrollTop;
+        }
+    };
+})('modal-open');
+```
