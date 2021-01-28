@@ -802,7 +802,7 @@ CSSOM会阻塞渲染，只有当CSSOM构建完毕后才会进入下一个阶段�
 - js优化
   
     script标签加上defer属性和async属性用于在不阻塞页面文档解析的前提下，控制脚本的下载和执行
-    ![](https://github.com/LiuYJia/DailyNotes/images/defer_async.png "defer_async")
+    ![](https://github.com/LiuYJia/DailyNotes/blob/main/images/defer_async.png "defer_async")
 
 # Notes
 ## 滑动穿透事件
