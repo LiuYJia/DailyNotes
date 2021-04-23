@@ -16,6 +16,30 @@
   - [切割字符串](#切割字符串)
   - [深拷贝与浅拷贝](#深拷贝与浅拷贝)
   - [for……in和for……of](#forin和forof)
+  - [js question](#js-question)
+    - [输出是什么？](#输出是什么)
+    - [输出是什么？](#输出是什么-1)
+    - [10. 当我们这么做时，会发生什么？](#10-当我们这么做时会发生什么)
+    - [12. 输出是什么？](#12-输出是什么)
+    - [15. 输出是什么？](#15-输出是什么)
+    - [17. 输出是什么？](#17-输出是什么)
+    - [输出是什么？](#输出是什么-2)
+    - [37. 输出是什么？](#37-输出是什么)
+    - [输出是什么？](#输出是什么-3)
+    - [40. 输出是什么？](#40-输出是什么)
+    - [43. 输出是什么？](#43-输出是什么)
+    - [44. 输出是什么?](#44-输出是什么)
+  - [</details>](#details)
+    - [45. 返回值是什么?](#45-返回值是什么)
+  - [</details>](#details-1)
+    - [46. 输出是什么?](#46-输出是什么)
+    - [49. `num`的值是什么?](#49-num的值是什么)
+    - [57. 输出是什么?](#57-输出是什么)
+  - [</details>](#details-2)
+    - [63. 输出是什么?](#63-输出是什么)
+    - [67. 输出什么?](#67-输出什么)
+    - [71. 如何能打印出`console.log`语句后注释掉的值？](#71-如何能打印出consolelog语句后注释掉的值)
+    - [73. 输出什么?](#73-输出什么)
 - [Css](#css)
   - [BFC](#bfc)
   - [圣杯布局与双飞翼布局](#圣杯布局与双飞翼布局)
@@ -31,6 +55,9 @@
     - [性能优化策略](#性能优化策略)
 - [Notes](#notes)
   - [滑动穿透事件](#滑动穿透事件)
+- [微信小程序](#微信小程序)
+  - [基础信息](#基础信息)
+  - [icon组件](#icon组件)
 ---
 
 
@@ -549,7 +576,7 @@ document.getElementById("upJS").onclick = function() {
 }
 
 $('#upJQuery').on('click', function() {
-    varfd = new FormData();
+    var fd = new FormData();
     fd.append("upload", 1);
     fd.append("upfile", $("#upfile").get(0).files[0]);
         $.ajax({
@@ -631,6 +658,644 @@ $('#upJQuery').on('click', function() {
         console.log(key+": "+student[key]);
     }// name: wujunchuan    age: 22    locate: [object Object]
     ```
+## js question
+### 输出是什么？
+```javascript
+function sayHi() {
+  console.log(name)
+  console.log(age)
+  var name = 'Lydia'
+  let age = 21
+}
+
+sayHi()
+```
+
+- A: `Lydia` 和 `undefined`
+- B: `Lydia` 和 `ReferenceError`
+- C: `ReferenceError` 和 `21`
+- D: `undefined` 和 `ReferenceError`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: D
+
+在函数内部，我们首先通过 `var` 关键字声明了 `name` 变量。这意味着变量被提升了（内存空间在创建阶段就被设置好了），直到程序运行到定义变量位置之前默认值都是 `undefined`。因为当我们打印 `name` 变量时还没有执行到定义变量的位置，因此变量的值保持为 `undefined`。
+
+通过 `let` 和 `const` 关键字声明的变量也会提升，但是和 `var` 不同，它们不会被<i>初始化</i>。在我们声明（初始化）之前是不能访问它们的。这个行为被称之为暂时性死区。当我们试图在声明之前访问它们时，JavaScript 将会抛出一个 `ReferenceError` 错误。
+
+</p>
+</details>
+
+---
+### 输出是什么？
+
+```javascript
+class Chameleon {
+  static colorChange(newColor) {
+    this.newColor = newColor
+    return this.newColor
+  }
+
+  constructor({ newColor = 'green' } = {}) {
+    this.newColor = newColor
+  }
+}
+
+const freddie = new Chameleon({ newColor: 'purple' })
+freddie.colorChange('orange')
+```
+
+- A: `orange`
+- B: `purple`
+- C: `green`
+- D: `TypeError`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: D
+
+`colorChange` 是一个静态方法。静态方法被设计为只能被创建它们的构造器使用（也就是 `Chameleon`），并且不能传递给实例。因为 `freddie` 是一个实例，静态方法不能被实例使用，因此抛出了 `TypeError` 错误。
+
+</p>
+</details>
+
+---
+
+### 10. 当我们这么做时，会发生什么？
+
+```javascript
+function bark() {
+  console.log('Woof!')
+}
+
+bark.animal = 'dog'
+```
+
+- A: 正常运行!
+- B: `SyntaxError`. 你不能通过这种方式给函数增加属性。
+- C: `undefined`
+- D: `ReferenceError`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: A
+
+这在 JavaScript 中是可以的，因为函数是对象！（除了基本类型之外其他都是对象）
+
+函数是一个特殊的对象。你写的这个代码其实不是一个实际的函数。函数是一个拥有属性的对象，并且属性也可被调用。
+
+</p>
+</details>
+
+---
+### 12. 输出是什么？
+
+```javascript
+function Person(firstName, lastName) {
+  this.firstName = firstName
+  this.lastName = lastName
+}
+
+const lydia = new Person('Lydia', 'Hallie')
+const sarah = Person('Sarah', 'Smith')
+
+console.log(lydia)
+console.log(sarah)
+```
+
+- A: `Person {firstName: "Lydia", lastName: "Hallie"}` and `undefined`
+- B: `Person {firstName: "Lydia", lastName: "Hallie"}` and `Person {firstName: "Sarah", lastName: "Smith"}`
+- C: `Person {firstName: "Lydia", lastName: "Hallie"}` and `{}`
+- D:`Person {firstName: "Lydia", lastName: "Hallie"}` and `ReferenceError`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: A
+
+对于 `sarah`，我们没有使用 `new` 关键字。当使用 `new` 时，`this` 引用我们创建的空对象。当未使用 `new` 时，`this` 引用的是**全局对象**（global object）。
+
+我们说 `this.firstName` 等于 `"Sarah"`，并且 `this.lastName` 等于 `"Smith"`。实际上我们做的是，定义了 `global.firstName = 'Sarah'` 和 `global.lastName = 'Smith'`。而 `sarah` 本身是 `undefined`。
+
+</p>
+</details>
+
+---
+### 15. 输出是什么？
+
+```javascript
+function sum(a, b) {
+  return a + b
+}
+
+sum(1, '2')
+```
+
+- A: `NaN`
+- B: `TypeError`
+- C: `"12"`
+- D: `3`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+JavaScript 是一种**动态类型语言**：我们不指定某些变量的类型。值可以在你不知道的情况下自动转换成另一种类型，这种类型称为**隐式类型转换**（implicit type coercion）。**Coercion** 是指将一种类型转换为另一种类型。
+
+在本例中，JavaScript 将数字 `1` 转换为字符串，以便函数有意义并返回一个值。在数字类型（`1`）和字符串类型（`'2'`）相加时，该数字被视为字符串。我们可以连接字符串，比如 `"Hello" + "World"`，这里发生的是 `"1" + "2"`，它返回 `"12"`。
+
+</p>
+</details>
+
+---
+### 17. 输出是什么？
+
+```javascript
+function getPersonInfo(one, two, three) {
+  console.log(one)
+  console.log(two)
+  console.log(three)
+}
+
+const person = 'Lydia'
+const age = 21
+
+getPersonInfo`${person} is ${age} o years old`
+```
+
+- A: `"Lydia"` `21` `["", " is ", " years old"]`
+- B: `["", " is ", " years old"]` `"Lydia"` `21`
+- C: `"Lydia"` `["", " is ", " years old"]` `21`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: B
+
+如果使用标记模板字面量，第一个参数的值总是包含字符串的数组。其余的参数获取的是传递的表达式的值！
+
+</p>
+</details>
+
+---
+### 输出是什么？
+
+```javascript
+const a = {}
+const b = { key: 'b' }
+const c = { key: 'c' }
+
+a[b] = 123
+a[c] = 456
+
+console.log(a[b])
+```
+
+- A: `123`
+- B: `456`
+- C: `undefined`
+- D: `ReferenceError`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: B
+
+对象的键被自动转换为字符串。我们试图将一个对象 `b` 设置为对象 `a` 的键，且相应的值为 `123`。
+
+然而，当字符串化一个对象时，它会变成 `"[object Object]"`。因此这里说的是，`a["[object Object]"] = 123`。然后，我们再一次做了同样的事情，`c` 是另外一个对象，这里也有隐式字符串化，于是，`a["[object Object]"] = 456`。
+
+然后，我们打印 `a[b]`，也就是 `a["[object Object]"]`。之前刚设置为 `456`，因此返回的是 `456`。
+
+</p>
+</details>
+
+---
+### 37. 输出是什么？
+
+```javascript
+const numbers = [1, 2, 3]
+numbers[10] = 11
+console.log(numbers)
+```
+
+- A: `[1, 2, 3, 7 x null, 11]`
+- B: `[1, 2, 3, 11]`
+- C: `[1, 2, 3, 7 x empty, 11]`
+- D: `SyntaxError`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+当你为数组设置超过数组长度的值的时候， JavaScript 会创建名为 "empty slots" 的东西。它们的值实际上是 `undefined`。你会看到以下场景：
+
+`[1, 2, 3, 7 x empty, 11]`
+
+这取决于你的运行环境（每个浏览器，以及 node 环境，都有可能不同）
+
+</p>
+</details>
+
+---
+### 输出是什么？
+
+```javascript
+(() => {
+  let x, y
+  try {
+    throw new Error()
+  } catch (x) {
+    (x = 1), (y = 2)
+    console.log(x)
+  }
+  console.log(x)
+  console.log(y)
+})()
+```
+
+- A: `1` `undefined` `2`
+- B: `undefined` `undefined` `undefined`
+- C: `1` `1` `2`
+- D: `1` `undefined` `undefined`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: A
+
+`catch` 代码块接收参数 `x`。当我们传递参数时，这与之前定义的变量 `x` 不同 。这个 `x` 是属于 `catch` 块级作用域的。
+
+然后，我们将块级作用域中的变量赋值为 `1`，同时也设置了变量 `y` 的值。现在，我们打印块级作用域中的变量 `x`，值为 `1`。
+
+`catch` 块之外的变量 `x` 的值仍为 `undefined`， `y` 的值为 `2`。当我们在 `catch` 块之外执行 `console.log(x)` 时，返回 `undefined`，`y` 返回 `2`。
+
+</p>
+</details>
+
+---
+### 40. 输出是什么？
+
+```javascript
+array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+//必需。初始值, 上次调用函数的返回值。
+//必需。当前元素
+//可选。当前元素的索引
+//可选。当前元素所属的数组对象。
+//可选。传递给函数的初始值
+[[0, 1], [2, 3]].reduce(
+  (acc, cur) => {
+    return acc.concat(cur)
+  },
+  [1, 2]
+)
+```
+
+- A: `[0, 1, 2, 3, 1, 2]`
+- B: `[6, 1, 2]`
+- C: `[1, 2, 0, 1, 2, 3]`
+- D: `[1, 2, 6]`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+`[1, 2]`是初始值。初始值将会作为首次调用时第一个参数 `acc` 的值。在第一次执行时， `acc` 的值是 `[1, 2]`， `cur` 的值是 `[0, 1]`。合并它们，结果为 `[1, 2, 0, 1]`。
+第二次执行， `acc` 的值是 `[1, 2, 0, 1]`， `cur` 的值是 `[2, 3]`。合并它们，最终结果为 `[1, 2, 0, 1, 2, 3]`
+
+</p>
+</details>
+
+---
+### 43. 输出是什么？
+
+```javascript
+[...'Lydia']
+```
+
+- A: `["L", "y", "d", "i", "a"]`
+- B: `["Lydia"]`
+- C: `[[], "Lydia"]`
+- D: `[["L", "y", "d", "i", "a"]]`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: A
+
+string 类型是可迭代的。扩展运算符将迭代的每个字符映射成一个元素。
+
+</p>
+</details>
+
+---
+### 44. 输出是什么?
+
+```javascript
+function* generator(i) {
+  yield i;
+  yield i * 2;
+}
+
+const gen = generator(10);
+
+console.log(gen.next().value);
+console.log(gen.next().value);
+```
+
+- A: `[0, 10], [10, 20]`
+- B: `20, 20`
+- C: `10, 20`
+- D: `0, 10 and 10, 20`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+一般的函数在执行之后是不能中途停下的。但是，生成器函数却可以中途“停下”，之后可以再从停下的地方继续。当生成器遇到`yield`关键字的时候，会生成`yield`后面的值。注意，生成器在这种情况下不 _返回_ (_return_ )值，而是 _生成_ (_yield_)值。
+
+首先，我们用`10`作为参数`i`来初始化生成器函数。然后使用`next()`方法一步步执行生成器。第一次执行生成器的时候，`i`的值为`10`，遇到第一个`yield`关键字，它要生成`i`的值。此时，生成器“暂停”，生成了`10`。
+
+然后，我们再执行`next()`方法。生成器会从刚才暂停的地方继续，这个时候`i`还是`10`。于是我们走到了第二个`yield`关键字处，这时候需要生成的值是`i*2`，`i`为`10`，那么此时生成的值便是`20`。所以这道题的最终结果是`10,20`。
+
+
+</p>
+</details>
+---
+
+### 45. 返回值是什么?
+
+```javascript
+const firstPromise = new Promise((res, rej) => {
+  setTimeout(res, 500, "one");
+});
+
+const secondPromise = new Promise((res, rej) => {
+  setTimeout(res, 100, "two");
+});
+
+Promise.race([firstPromise, secondPromise]).then(res => console.log(res));
+Promise.race([firstPromise, secondPromise]).then(res => console.log(res));//['one','two']失败的时候则返回最先被reject失败状态的值
+```
+
+- A: `"one"`
+- B: `"two"`
+- C: `"two" "one"`
+- D: `"one" "two"`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: B
+
+当我们向`Promise.race`方法中传入多个`Promise`时，会进行 _优先_ 解析。在这个例子中，我们用`setTimeout`给`firstPromise`和`secondPromise`分别设定了500ms和100ms的定时器。这意味着`secondPromise`会首先解析出字符串`two`。那么此时`res`参数即为`two`，是为输出结果。
+
+</p>
+</details>
+---
+
+### 46. 输出是什么?
+
+```javascript
+let person = { name: "Lydia" };
+const members = [person];
+person = null;
+
+console.log(members);
+```
+
+- A: `null`
+- B: `[null]`
+- C: `[{}]`
+- D: `[{ name: "Lydia" }]`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: D
+
+
+首先我们声明了一个拥有`name`属性的对象 `person`。
+
+<img src="https://i.imgur.com/TML1MbS.png" width="200">
+
+然后我们又声明了一个变量`members`. 将首个元素赋值为变量`person`。 当设置两个对象彼此相等时，它们会通过 _引用_ 进行交互。但是当你将引用从一个变量分配至另一个变量时，其实只是执行了一个 _复制_ 操作。（注意一点，他们的引用 _并不相同_!）
+
+<img src="https://i.imgur.com/FSG5K3F.png" width="300">
+
+接下来我们让`person`等于`null`。
+
+<img src="https://i.imgur.com/sYjcsMT.png" width="300">
+
+我们没有修改数组第一个元素的值，而只是修改了变量`person`的值,因为元素（复制而来）的引用与`person`不同。`members`的第一个元素仍然保持着对原始对象的引用。当我们输出`members`数组时，第一个元素会将引用的对象打印出来。
+
+</p>
+</details>
+
+---
+
+### 49. `num`的值是什么?
+
+```javascript
+const num = parseInt("7*6", 10);
+```
+
+- A: `42`
+- B: `"42"`
+- C: `7`
+- D: `NaN`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+只返回了字符串中第一个字母. 设定了 _进制_ 后 (也就是第二个参数，指定需要解析的数字是什么进制: 十进制、十六机制、八进制、二进制等等……),`parseInt` 检查字符串中的字符是否合法. 一旦遇到一个在指定进制中不合法的字符后，立即停止解析并且忽略后面所有的字符。
+
+`*`就是不合法的数字字符。所以只解析到`"7"`，并将其解析为十进制的`7`. `num`的值即为`7`.
+
+</p>
+</details>
+
+---
+
+### 57. 输出是什么?
+
+```javascript
+// counter.js
+let counter = 10;
+export default counter;
+```
+
+```javascript
+// index.js
+import myCounter from "./counter";
+
+myCounter += 1;
+
+console.log(myCounter);
+```
+
+- A: `10`
+- B: `11`
+- C: `Error`
+- D: `NaN`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+引入的模块是 _只读_ 的: 你不能修改引入的模块。只有导出他们的模块才能修改其值。
+
+当我们给`myCounter`增加一个值的时候会抛出一个异常： `myCounter`是只读的，不能被修改。
+
+</p>
+</details>
+---
+
+### 63. 输出是什么?
+
+```javascript
+let num = 10;
+
+const increaseNumber = () => num++;
+const increasePassedNumber = number => number++;
+
+const num1 = increaseNumber();
+const num2 = increasePassedNumber(num1);
+
+console.log(num1);
+console.log(num2);
+```
+
+- A: `10`, `10`
+- B: `10`, `11`
+- C: `11`, `11`
+- D: `11`, `12`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: A
+
+一元操作符 `++` _先返回_ 操作值, _再累加_ 操作值。`num1`的值是`10`, 因为`increaseNumber`函数首先返回`num`的值，也就是`10`，随后再进行 `num`的累加。
+
+`num2`是`10`因为我们将 `num1`传入`increasePassedNumber`. `number`等于`10`（`num1`的值。同样道理，`++` _先返回_ 操作值, _再累加_ 操作值。） `number`是`10`，所以`num2`也是`10`.
+
+</p>
+</details>
+
+---
+
+### 67. 输出什么?
+
+```javascript
+// index.js
+console.log('running index.js');
+import { sum } from './sum.js';
+console.log(sum(1, 2));
+
+// sum.js
+console.log('running sum.js');
+export const sum = (a, b) => a + b;
+```
+
+- A: `running index.js`, `running sum.js`, `3`
+- B: `running sum.js`, `running index.js`, `3`
+- C: `running sum.js`, `3`, `running index.js`
+- D: `running index.js`, `undefined`, `running sum.js`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: B
+
+`import`命令是编译阶段执行的，在代码运行之前。因此这意味着被导入的模块会先运行，而导入模块的文件会后执行。
+
+这是CommonJS中`require（）`和`import`之间的区别。使用`require()`，您可以在运行代码时根据需要加载依赖项。 如果我们使用`require`而不是`import`，`running index.js`，`running sum.js`，`3`会被依次打印。
+
+</p>
+</details>
+
+---
+
+### 71. 如何能打印出`console.log`语句后注释掉的值？
+
+```javascript
+function* startGame() {
+  const 答案 = yield "Do you love JavaScript?";
+  if (答案 !== "Yes") {
+    return "Oh wow... Guess we're gone here";
+  }
+  return "JavaScript loves you back ❤️";
+}
+
+const game = startGame();
+console.log(/* 1 */); // Do you love JavaScript?
+console.log(/* 2 */); // JavaScript loves you back ❤️
+//.next()  { value: 'xxx', done: false } 
+```
+
+- A: `game.next("Yes").value` and `game.next().value`
+- B: `game.next.value("Yes")` and `game.next.value()`
+- C: `game.next().value` and `game.next("Yes").value`
+- D: `game.next.value()` and `game.next.value("Yes")`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+`generator`函数在遇到`yield`关键字时会“暂停”其执行。 首先，我们需要让函数产生字符串`Do you love JavaScript?`，这可以通过调用`game.next().value`来完成。上述函数的第一行就有一个`yield`关键字，那么运行立即停止了，`yield`表达式本身没有返回值，或者说总是返回`undefined`, 这意味着此时变量 `答案` 为`undefined`
+
+`next`方法可以带一个参数，该参数会被当作上一个 `yield` 表达式的返回值。当我们调用`game.next("Yes").value`时，先前的 `yield` 的返回值将被替换为传递给`next()`函数的参数`"Yes"`。此时变量 `答案` 被赋值为 `"Yes"`，`if`语句返回`false`，所以`JavaScript loves you back ❤️`被打印。
+
+</p>
+</details>
+
+---
+
+### 73. 输出什么?
+
+```javascript
+async function getData() {
+  return await Promise.resolve("I made it!");
+}
+
+const data = getData();
+console.log(data);
+```
+
+- A: `"I made it!"`
+- B: `Promise {<resolved>: "I made it!"}`
+- C: `Promise {<pending>}`
+- D: `undefined`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+异步函数始终返回一个promise。`await`仍然需要等待promise的解决：当我们调用`getData()`并将其赋值给`data`，此时`data`为`getData`方法返回的一个挂起的promise，该promise并没有解决。
+
+如果我们想要访问已解决的值`"I made it!"`，可以在`data`上使用`.then()`方法：
+
+`data.then(res => console.log(res))`
+
+这样将打印 `"I made it!"`
+
+</p>
+</details>
+
 # Css
 ## BFC
 BFC(Block formatting context)直译为"块级格式化上下文"。它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。
@@ -827,3 +1492,52 @@ var ModalHelper = (function(bodyCls) {
     };
 })('modal-open');
 ```
+
+# 微信小程序
+## 基础信息
+开发流程
+- 注册
+- 小程序信息完善
+- 开发小程序
+- 提交审核和发布
+  
+启动方式
+- 热启动（已经打开过一定时间内再次打开无需重新启动）
+- 冷启动（首次打开或销毁后重新打开）
+  
+双线程架构（通过WXJSBridge和底层native通信）
+- View视图线程
+- App Service逻辑线程
+  
+WXS（setData更新瓶颈）
+- WXS和WXML可构建出页面的组件结构
+- 不依赖运行时基础库版本，可在所有版本小程序运行
+- 运行在视图层，提高渲染更新效率
+- 运行环境与js代码隔离且不能调用wx-api
+- 不能作为事件函数绑定在标签上
+- 在ios上比js快2-20倍
+```
+<view>
+    <view>
+        <text>{{tools.bar()}}</text>
+        <text>{{tools.foo}}</text>
+    </view>
+    <wxs module="tools">
+        var foo = 'helloworld'
+        var bar = function(){
+            return 'aaa'
+        }
+        module.exports = {
+            foo:foo
+            bar:bar
+        }
+    </wxs>
+</view>
+```
+## icon组件
+真机icon显示空白问题？
+
+wxss内加载图片及字体文件资源时允许使用外域地址，检查机型及嵌入的字体文件类型（兼容性），推荐使用TTF和WOFF格式字体，如果问题依然存在考虑换SVG格式的数据嵌入
+
+
+
