@@ -24,22 +24,50 @@
     - [15. 输出是什么？](#15-输出是什么)
     - [17. 输出是什么？](#17-输出是什么)
     - [输出是什么？](#输出是什么-2)
-    - [37. 输出是什么？](#37-输出是什么)
     - [输出是什么？](#输出是什么-3)
-    - [40. 输出是什么？](#40-输出是什么)
-    - [43. 输出是什么？](#43-输出是什么)
-    - [44. 输出是什么?](#44-输出是什么)
+    - [输出是什么？](#输出是什么-4)
+    - [输出是什么？](#输出是什么-5)
+    - [输出是什么？](#输出是什么-6)
+    - [输出是什么?](#输出是什么-7)
+    - [返回值是什么?](#返回值是什么)
   - [</details>](#details)
-    - [45. 返回值是什么?](#45-返回值是什么)
-  - [</details>](#details-1)
-    - [46. 输出是什么?](#46-输出是什么)
-    - [49. `num`的值是什么?](#49-num的值是什么)
-    - [57. 输出是什么?](#57-输出是什么)
-  - [</details>](#details-2)
-    - [63. 输出是什么?](#63-输出是什么)
-    - [67. 输出什么?](#67-输出什么)
-    - [71. 如何能打印出`console.log`语句后注释掉的值？](#71-如何能打印出consolelog语句后注释掉的值)
-    - [73. 输出什么?](#73-输出什么)
+    - [输出是什么?](#输出是什么-8)
+    - [`num`的值是什么?](#num的值是什么)
+    - [输出是什么?](#输出是什么-9)
+    - [输出是什么?](#输出是什么-10)
+    - [输出什么?](#输出什么)
+    - [如何能打印出`console.log`语句后注释掉的值？](#如何能打印出consolelog语句后注释掉的值)
+    - [输出什么?](#输出什么-1)
+    - [输出什么?](#输出什么-2)
+    - [输出什么?](#输出什么-3)
+    - [输出什么?](#输出什么-4)
+    - [输出什么?](#输出什么-5)
+    - [<a name=20190817></a>输出什么?](#输出什么-6)
+    - [输出什么?](#输出什么-7)
+    - [输出什么?](#输出什么-8)
+    - [输出什么?](#输出什么-9)
+    - [结果是什么?](#结果是什么)
+    - [输出什么?](#输出什么-10)
+          - [88. 输出什么?](#88-输出什么)
+      - [答案: B](#答案-b)
+    - [输出什么?](#输出什么-11)
+    - [输出什么?](#输出什么-12)
+    - [输出什么?](#输出什么-13)
+    - [输出什么?](#输出什么-14)
+    - [输出什么？](#输出什么-15)
+    - [输出什么？](#输出什么-16)
+    - [输出什么？](#输出什么-17)
+    - [我们怎样才能在 `index.js` 中调用 `sum.js?` 中的 `sum`？](#我们怎样才能在-indexjs-中调用-sumjs-中的-sum)
+    - [输出什么？](#输出什么-18)
+    - [以下哪一项会对对象 `person` 有副作用？](#以下哪一项会对对象-person-有副作用)
+    - [以下哪一项会对对象 `person` 有副作用？](#以下哪一项会对对象-person-有副作用-1)
+    - [输出什么？](#输出什么-19)
+    - [我们需要向对象 `person` 添加什么，以致执行 `[...person]` 时获得形如 `["Lydia Hallie", 21]` 的输出？](#我们需要向对象-person-添加什么以致执行-person-时获得形如-lydia-hallie-21-的输出)
+    - [输出是什么？](#输出是什么-11)
+    - [输出什么?](#输出什么-20)
+    - [输出什么?](#输出什么-21)
+    - [输出什么?](#输出什么-22)
+    - [哪个作为`method`的值可以打印`{ name: "Lydia", age: 22 }`?](#哪个作为method的值可以打印-name-lydia-age-22-)
 - [Css](#css)
   - [BFC](#bfc)
   - [圣杯布局与双飞翼布局](#圣杯布局与双飞翼布局)
@@ -825,7 +853,7 @@ function getPersonInfo(one, two, three) {
 const person = 'Lydia'
 const age = 21
 
-getPersonInfo`${person} is ${age} o years old`
+getPersonInfo`${person} is ${age} years old`
 ```
 
 - A: `"Lydia"` `21` `["", " is ", " years old"]`
@@ -876,7 +904,7 @@ console.log(a[b])
 </details>
 
 ---
-### 37. 输出是什么？
+### 输出是什么？
 
 ```javascript
 const numbers = [1, 2, 3]
@@ -940,7 +968,7 @@ console.log(numbers)
 </details>
 
 ---
-### 40. 输出是什么？
+### 输出是什么？
 
 ```javascript
 array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
@@ -974,7 +1002,7 @@ array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
 </details>
 
 ---
-### 43. 输出是什么？
+### 输出是什么？
 
 ```javascript
 [...'Lydia']
@@ -996,7 +1024,8 @@ string 类型是可迭代的。扩展运算符将迭代的每个字符映射成�
 </details>
 
 ---
-### 44. 输出是什么?
+
+### 输出是什么?
 
 ```javascript
 function* generator(i) {
@@ -1029,9 +1058,10 @@ console.log(gen.next().value);
 
 </p>
 </details>
+
 ---
 
-### 45. 返回值是什么?
+### 返回值是什么?
 
 ```javascript
 const firstPromise = new Promise((res, rej) => {
@@ -1062,7 +1092,7 @@ Promise.race([firstPromise, secondPromise]).then(res => console.log(res));//['on
 </details>
 ---
 
-### 46. 输出是什么?
+### 输出是什么?
 
 ```javascript
 let person = { name: "Lydia" };
@@ -1102,7 +1132,7 @@ console.log(members);
 
 ---
 
-### 49. `num`的值是什么?
+### `num`的值是什么?
 
 ```javascript
 const num = parseInt("7*6", 10);
@@ -1127,7 +1157,7 @@ const num = parseInt("7*6", 10);
 
 ---
 
-### 57. 输出是什么?
+### 输出是什么?
 
 ```javascript
 // counter.js
@@ -1160,9 +1190,10 @@ console.log(myCounter);
 
 </p>
 </details>
+
 ---
 
-### 63. 输出是什么?
+### 输出是什么?
 
 ```javascript
 let num = 10;
@@ -1196,7 +1227,7 @@ console.log(num2);
 
 ---
 
-### 67. 输出什么?
+### 输出什么?
 
 ```javascript
 // index.js
@@ -1228,7 +1259,7 @@ export const sum = (a, b) => a + b;
 
 ---
 
-### 71. 如何能打印出`console.log`语句后注释掉的值？
+### 如何能打印出`console.log`语句后注释掉的值？
 
 ```javascript
 function* startGame() {
@@ -1264,7 +1295,7 @@ console.log(/* 2 */); // JavaScript loves you back ❤️
 
 ---
 
-### 73. 输出什么?
+### 输出什么?
 
 ```javascript
 async function getData() {
@@ -1292,6 +1323,1016 @@ console.log(data);
 `data.then(res => console.log(res))`
 
 这样将打印 `"I made it!"`
+
+</p>
+</details>
+
+---
+
+### 输出什么?
+
+```javascript
+function checkAge(age) {
+  if (age < 18) {
+    const message = "Sorry, you're too young."
+  } else {
+    const message = "Yay! You're old enough!"
+  }
+
+  return message
+}
+
+console.log(checkAge(21))
+```
+
+- A: `"Sorry, you're too young."`
+- B: `"Yay! You're old enough!"`
+- C: `ReferenceError`
+- D: `undefined`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+`const`和`let`声明的变量是具有**块级作用域**的，块是大括号（`{}`）之间的任何东西, 即上述情况`if / else`语句的花括号。 由于块级作用域，我们无法在声明的块之外引用变量，因此抛出`ReferenceError`。
+
+</p>
+</details>
+
+---
+
+### 输出什么?
+
+```javascript
+function giveLydiaPizza() {
+  return "Here is pizza!"
+}
+
+const giveLydiaChocolate = () => "Here's chocolate... now go hit the gym already."
+
+console.log(giveLydiaPizza.prototype)
+console.log(giveLydiaChocolate.prototype)
+```
+
+- A: `{ constructor: ...}` `{ constructor: ...}` 
+- B: `{}` `{ constructor: ...}` 
+- C: `{ constructor: ...}` `{}`
+- D: `{ constructor: ...}` `undefined`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: D
+
+常规函数，例如`giveLydiaPizza`函数，有一个`prototype`属性，它是一个带有`constructor`属性的对象（原型对象）。 然而，箭头函数，例如`giveLydiaChocolate`函数，没有这个`prototype`属性。 尝试使用`giveLydiaChocolate.prototype`访问`prototype`属性时会返回`undefined`。
+
+</p>
+</details>
+
+---
+
+### 输出什么?
+
+```javascript
+const person = {
+  name: "Lydia",
+  age: 21
+}
+
+for (const [x, y] of Object.entries(person)) {
+  console.log(x, y)
+}
+```
+
+- A: `name` `Lydia` and `age` `21`
+- B: `["name", "Lydia"]` and `["age", 21]` 
+- C: `["name", "age"]` and `undefined`
+- D: `Error`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: A
+`Object.entries()`方法返回一个给定对象自身可枚举属性的键值对数组，上述情况返回一个二维数组，数组每个元素是一个包含键和值的数组：
+
+`[['name'，'Lydia']，['age'，21]]`
+
+使用`for-of`循环，我们可以迭代数组中的每个元素，上述情况是子数组。 我们可以使用`const [x，y]`在`for-of`循环中解构子数组。 `x`等于子数组中的第一个元素，`y`等于子数组中的第二个元素。
+
+第一个子阵列是`[“name”，“Lydia”]`，其中`x`等于`name`，而`y`等于`Lydia`。
+第二个子阵列是`[“age”，21]`，其中`x`等于`age`，而`y`等于`21`。
+
+</p>
+</details>
+
+---
+
+###  输出什么?
+
+```javascript
+function getItems(fruitList, ...args, favoriteFruit) {
+  return [...fruitList, ...args, favoriteFruit]
+}
+
+getItems(["banana", "apple"], "pear", "orange")
+```
+
+- A: `["banana", "apple", "pear", "orange"]`
+- B: `[["banana", "apple"], "pear", "orange"]` 
+- C: `["banana", "apple", ["pear"], "orange"]`
+- D: `SyntaxError`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: D
+
+`... args`是剩余参数，剩余参数的值是一个包含所有剩余参数的数组，**并且只能作为最后一个参数**。上述示例中，剩余参数是第二个参数，这是不可能的，并会抛出语法错误。
+
+```javascript
+function getItems(fruitList, favoriteFruit, ...args) {
+  return [...fruitList, ...args, favoriteFruit]
+}
+
+getItems(["banana", "apple"], "pear", "orange")
+```
+
+上述例子是有效的，将会返回数组：`[ 'banana', 'apple', 'orange', 'pear' ]`
+</p>
+</details>
+
+---
+
+### <a name=20190817></a>输出什么?
+
+```javascript
+function nums(a, b) {
+  if
+  (a > b)
+  console.log('a is bigger')
+  else 
+  console.log('b is bigger')
+  return 
+  a + b
+}
+
+console.log(nums(4, 2))
+console.log(nums(1, 2))
+```
+
+- A: `a is bigger`, `6` and `b is bigger`, `3`
+- B: `a is bigger`, `undefined` and `b is bigger`, `undefined`
+- C: `undefined` and `undefined`
+- D: `SyntaxError`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: B
+
+
+在JavaScript中，我们不必显式地编写分号(`;`)，但是JavaScript引擎仍然在语句之后自动添加分号。这称为**自动分号插入**。例如，一个语句可以是变量，或者像`throw`、`return`、`break`这样的关键字。
+
+在这里，我们在新的一行上写了一个`return`语句和另一个值`a + b `。然而，由于它是一个新行，引擎并不知道它实际上是我们想要返回的值。相反，它会在`return`后面自动添加分号。你可以这样看:
+
+```javascript
+  return;
+  a + b
+```
+
+这意味着永远不会到达`a + b`，因为函数在`return`关键字之后停止运行。如果没有返回值，就像这里，函数返回`undefined`。注意，在`if/else`语句之后没有自动插入!
+
+</p>
+</details>
+
+---
+
+### 输出什么?
+
+```javascript
+class Person {
+  constructor() {
+    this.name = "Lydia"
+  }
+}
+
+Person = class AnotherPerson {
+  constructor() {
+    this.name = "Sarah"
+  }
+}
+
+const member = new Person()
+console.log(member.name)
+```
+
+- A: `"Lydia"`
+- B: `"Sarah"`
+- C: `Error: cannot redeclare Person`
+- D: `SyntaxError`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: B
+
+
+我们可以将类设置为等于其他类/函数构造函数。 在这种情况下，我们将`Person`设置为`AnotherPerson`。 这个构造函数的名字是`Sarah`，所以新的`Person`实例`member`上的name属性是`Sarah`。
+
+
+</p>
+</details>
+
+---
+
+### 输出什么?
+
+```javascript
+const getList = ([x, ...y]) => [x, y]
+const getUser = user => { name: user.name, age: user.age }
+
+const list = [1, 2, 3, 4]
+const user = { name: "Lydia", age: 21 }
+
+console.log(getList(list))
+console.log(getUser(user))
+```
+
+- A: `[1, [2, 3, 4]]` and `undefined`
+- B: `[1, [2, 3, 4]]` and `{ name: "Lydia", age: 21 }`
+- C: `[1, 2, 3, 4]` and `{ name: "Lydia", age: 21 }`
+- D: `Error` and `{ name: "Lydia", age: 21 }`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: A
+
+`getList`函数接收一个数组作为其参数。 在`getList`函数的括号之间，我们立即解构这个数组。 您可以将其视为：
+
+ `[x, ...y] = [1, 2, 3, 4]`
+
+
+使用剩余的参数`... y`，我们将所有剩余参数放在一个数组中。 在这种情况下，其余的参数是`2`，`3`和`4`。 `y`的值是一个数组，包含所有其余参数。 在这种情况下，`x`的值等于`1`，所以当我们打印`[x，y]`时，会打印`[1，[2,3,4]]`。
+
+ `getUser`函数接收一个对象。对于箭头函数，如果只返回一个值，我们不必编写花括号。但是，如果您想从一个箭头函数返回一个对象，您必须在圆括号之间编写它，否则不会返回任何值!下面的函数将返回一个对象:
+
+```const getUser = user => ({ name: user.name, age: user.age })```
+
+由于在这种情况下不返回任何值，因此该函数返回`undefined`。
+
+</p>
+</details>
+
+---
+
+### 输出什么?
+
+```javascript
+// 🎉✨ This is my 100th question! ✨🎉
+
+const output = `${[] && 'Im'}possible!
+You should${'' && `n't`} see a therapist after so much JavaScript lol`
+```
+
+- A: `possible! You should see a therapist after so much JavaScript lol`
+- B: `Impossible! You should see a therapist after so much JavaScript lol`
+- C: `possible! You shouldn't see a therapist after so much JavaScript lol`
+- D: `Impossible! You shouldn't see a therapist after so much JavaScript lol`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: B
+
+
+`[]`是一个真值。 使用`&&`运算符，如果左侧值是真值，则返回右侧值。 在这种情况下，左侧值`[]`是一个真值，所以返回`Im`。
+
+`""`是一个假值。 如果左侧值是假的，则不返回任何内容。 `n't`不会被退回。
+
+</p>
+</details>
+
+---
+
+### 结果是什么?
+
+```javascript
+Promise.resolve(5)
+```
+
+- A: `5`
+- B: `Promise {<pending>: 5}`
+- C: `Promise {<fulfilled>: 5}`
+- D: `Error`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+我们可以将我们想要的任何类型的值传递`Promise.resolve`，无论是否`promise`。 该方法本身返回带有已解析值的`Promise` (`<fulfilled>`)。 如果您传递常规函数，它将是具有常规值的已解决`promise`。 如果你通过了promise，它将是一个已经resolved的且带有传的值的promise。
+
+上述情况，我们传了数字5，因此返回一个resolved状态的promise，resolve值为`5`
+
+</p>
+</details>
+
+---
+
+### 输出什么?
+
+```javascript
+function compareMembers(person1, person2 = person) {
+  if (person1 !== person2) {
+    console.log("Not the same!")
+  } else {
+    console.log("They are the same!")
+  }
+}
+
+const person = { name: "Lydia" }
+
+compareMembers(person)
+```
+
+- A: `Not the same!`
+- B: `They are the same!`
+- C: `ReferenceError`
+- D: `SyntaxError`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: B
+
+对象通过引用传递。 当我们检查对象的严格相等性（===）时，我们正在比较它们的引用。
+
+我们将“person2”的默认值设置为“person”对象，并将“person”对象作为“person1”的值传递。
+
+这意味着两个值都引用内存中的同一位置，因此它们是相等的。
+
+运行“ else”语句中的代码块，并记录`They are the same!` 。
+
+</p>
+</details>
+
+---
+
+###### 88. 输出什么?
+
+```javascript
+function sum(num1, num2 = num1) {
+  console.log(num1 + num2)
+}
+
+sum(10)
+```
+
+- A: `NaN`
+- B: `20`
+- C: `ReferenceError`
+- D: `undefined`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+#### 答案: B
+
+您可以将默认参数的值设置为函数的另一个参数，只要另一个参数定义在其之前即可。 我们将值`10`传递给`sum`函数。 如果`sum`函数只接收1个参数，则意味着没有传递`num2`的值，这种情况下，`num1`的值等于传递的值`10`。 `num2`的默认值是`num1`的值，即`10`。 ```num1 + num2```返回`20`。
+
+如果您尝试将默认参数的值设置为后面定义的参数，则可能导致参数的值尚未初始化，从而引发错误。比如：
+```js
+function test(m = n, n = 2) {
+	console.log(m, n)
+}
+test() // Uncaught ReferenceError: Cannot access 'n' before initialization
+test(3) // 3 2
+test(3, 4) // 3 4
+```
+
+</p>
+</details>
+
+---
+
+### 输出什么?
+
+```javascript
+function compareMembers(person1, person2 = person) {
+  if (person1 !== person2) {
+    console.log("Not the same!")
+  } else {
+    console.log("They are the same!")
+  }
+}
+
+const person = { name: "Lydia" }
+
+compareMembers(person)
+```
+
+- A: `Not the same!`
+- B: `They are the same!`
+- C: `ReferenceError`
+- D: `SyntaxError`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: B
+
+对象通过引用传递。 当我们检查对象的严格相等性（===）时，我们正在比较它们的引用。
+
+我们将“person2”的默认值设置为“person”对象，并将“person”对象作为“person1”的值传递。
+
+这意味着两个值都引用内存中的同一位置，因此它们是相等的。
+
+运行“ else”语句中的代码块，并记录`They are the same!` 。
+
+</p>
+</details>
+
+---
+
+### 输出什么?
+
+
+```javascript
+const colorConfig = {
+  red: true,
+  blue: false,
+  green: true,
+  black: true,
+  yellow: false,
+}
+
+const colors = ["pink", "red", "blue"]
+
+console.log(colorConfig.colors[1])
+```
+
+- A: `true`
+- B: `false`
+- C: `undefined`
+- D: `TypeError`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: D
+
+在JavaScript中，我们有两种访问对象属性的方法：括号表示法或点表示法。 在此示例中，我们使用点表示法（`colorConfig.colors`）代替括号表示法（`colorConfig [“ colors”]`）。
+
+使用点表示法，JavaScript会尝试使用该确切名称在对象上查找属性。 在此示例中，JavaScript尝试在colorconfig对象上找到名为colors的属性。 没有名为“colors”的属性，因此返回“undefined”。
+然后，我们尝试使用`[1]`访问第一个元素的值。 我们无法对未定义的值执行此操作，因此会抛出`Cannot read property '1' of undefined`。
+
+JavaScript解释（或取消装箱）语句。 当我们使用方括号表示法时，它会看到第一个左方括号`[`并一直进行下去，直到找到右方括号`]`。 只有这样，它才会评估该语句。 如果我们使用了colorConfig [colors [1]]，它将返回colorConfig对象上red属性的值。
+
+
+</p>
+</details>
+
+---
+
+### 输出什么?
+
+```javascript
+const config = {
+	languages: [],
+	set language(lang) {
+		return this.languages.push(lang);
+	}
+};
+
+console.log(config.language);
+```
+
+- A: `function language(lang) { this.languages.push(lang }`
+- B: `0`
+- C: `[]`
+- D: `undefined`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: D
+
+方法 `language` 是一个 `setter`。Setters 并不保存一个实际值，它们的使命在于 _修改_ 属性。当调用方法 `setter`， 返回 `undefined`。
+
+---
+
+### 输出什么?
+
+```javascript
+const add = x => y => z => {
+	console.log(x, y, z);
+	return x + y + z;
+};
+
+add(4)(5)(6);
+```
+
+- A: `4` `5` `6`
+- B: `6` `5` `4`
+- C: `4` `function` `function`
+- D: `undefined` `undefined` `6`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: A
+
+函数 `add` 是一个返回 返回箭头函数的箭头函数 的箭头函数（still with me?）。第一个函数接收一个值为 `4` 的参数 `x`。我们调用第二个函数，它接收一个值为 `5` 的参数 `y`。然后我们调用第三个函数，它接收一个值为 `6` 的参数 `z`。当我们尝试在最后一个箭头函数中获取 `x`, `y` 和 `z` 的值，JS 引擎根据作用域链去找 `x` 和 `y` 的值。得到 `4` `5` `6`.
+
+</p>
+</details>
+
+---
+
+###  输出什么？
+
+```javascript
+async function* range(start, end) {
+	for (let i = start; i <= end; i++) {
+		yield Promise.resolve(i);
+	}
+}
+
+(async () => {
+	const gen = range(1, 3);
+	for await (const item of gen) {
+		console.log(item);
+	}
+})();
+```
+
+- A: `Promise {1}` `Promise {2}` `Promise {3}`
+- B: `Promise {<pending>}` `Promise {<pending>}` `Promise {<pending>}`
+- C: `1` `2` `3`
+- D: `undefined` `undefined` `undefined`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+我们给 函数range 传递： `Promise{1}`, `Promise{2}`, `Promise{3}`，Generator 函数 `range` 返回一个全是 async object promise 数组。我们将 async object 赋值给变量 `gen`，之后我们使用`for await ... of` 进行循环遍历。我们将返回的 Promise 实例赋值给 `item`： 第一个返回 `Promise{1}`， 第二个返回 `Promise{2}`，之后是 `Promise{3}`。因为我们正 _awaiting_ `item` 的值，resolved 状态的 promsie，promise数组的resolved _值_ 以此为： `1`，`2`，`3`.
+
+</p>
+</details>
+
+---
+
+### 输出什么？
+
+```javascript
+const myFunc = ({ x, y, z }) => {
+	console.log(x, y, z);
+};
+
+myFunc(1, 2, 3);
+```
+
+- A: `1` `2` `3`
+- B: `{1: 1}` `{2: 2}` `{3: 3}`
+- C: `{ 1: undefined }` `undefined` `undefined`
+- D: `undefined` `undefined` `undefined`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: D
+
+`myFunc` 期望接收一个包含 `x`, `y` 和 `z` 属性的对象作为它的参数。因为我们仅仅传递三个单独的数字值 (1, 2, 3) 而不是一个含有 `x`, `y` 和 `z` 属性的对象 ({x: 1, y: 2, z: 3})， `x`, `y` 和 `z` 有着各自的默认值 `undefined`.
+
+</p>
+</details>
+
+---
+
+### 输出什么？
+
+```javascript
+const name = "Lydia Hallie";
+const age = 21;
+
+console.log(Number.isNaN(name));
+console.log(Number.isNaN(age));
+
+console.log(isNaN(name));
+console.log(isNaN(age));
+```
+
+- A: `true` `false` `true` `false`
+- B: `true` `false` `false` `false`
+- C: `false` `false` `true` `false`
+- D: `false` `true` `false` `true`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+通过方法 `Number.isNaN`，你可以检测你传递的值是否为 _数字值_ 并且是否等价于 `NaN`。`name` 不是一个数字值，因此 `Number.isNaN(name)` 返回 `false`。`age` 是一个数字值，但它不等价于 `NaN`，因此 `Number.isNaN(age)` 返回 `false`.
+
+通过方法 `isNaN`， 你可以检测你传递的值是否一个 number。`name` 不是一个 `number`，因此 `isNaN(name)` 返回 `true`. `age` 是一个 `number` 因此 `isNaN(age)` 返回 `false`.
+
+</p>
+</details>
+
+---
+
+### 我们怎样才能在 `index.js` 中调用 `sum.js?` 中的 `sum`？
+
+```javascript
+// sum.js
+export default function sum(x) {
+	return x + x;
+}
+
+// index.js
+import * as sum from "./sum";
+```
+
+- A: `sum(4)`
+- B: `sum.sum(4)`
+- C: `sum.default(4)`
+- D: 默认导出不用 `*` 来导入，只能具名导出
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+使用符号 `*`，我们引入文件中的所有值，包括默认和具名。如果我们有以下文件：
+
+```javascript
+// info.js
+export const name = "Lydia";
+export const age = 21;
+export default "I love JavaScript";
+
+// index.js
+import * as info from "./info";
+console.log(info);
+```
+
+将会输出以下内容：
+
+```javascript
+{
+  default: "I love JavaScript",
+  name: "Lydia",
+  age: 21
+}
+```
+
+以 `sum` 为例，相当于以下形式引入值 `sum`：
+
+```javascript
+{ default: function sum(x) { return x + x } }
+```
+
+我们可以通过调用 `sum.default` 来调用该函数
+
+</p>
+</details>
+
+---
+
+### 输出什么？
+
+```javascript
+const handler = {
+	set: () => console.log("Added a new property!"),
+	get: () => console.log("Accessed a property!")
+};
+
+const person = new Proxy({}, handler);
+
+person.name = "Lydia";
+person.name;
+```
+
+- A: `Added a new property!`
+- B: `Accessed a property!`
+- C: `Added a new property!` `Accessed a property!`
+- D: 没有任何输出
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+使用 Proxy 对象，我们可以给一个对象添加自定义行为。在这个 case，我们传递一个包含以下属性的对象 `handler` : `set` and `get`。每当我门 _设置_ 属性值时 `set` 被调用，每当我们 _获取_ 时 `get` 被调用。
+
+第一个参数是一个空对象 `{}`，作为 `person` 的值。对于这个对象，自定义行为被定义在对象 `handler`。如果我们向对象 `person` 添加属性，`set` 将被调用。如果我们获取 `person` 的属性, `get` 将被调用。
+
+首先，我们向 proxy 对象(`person.name = "Lydia"`)添加一个属性 `name`。`set` 被调用并输出 `"Added a new property!"`。
+
+然后，我们获取 proxy 对象的一个属性，对象 handler 的属性 `get` 被调用。输出 `"Accessed a property!"`。
+
+</p>
+</details>
+
+---
+
+### 以下哪一项会对对象 `person` 有副作用？
+
+```javascript
+const person = { name: "Lydia Hallie" };
+
+Object.seal(person);
+```
+
+- A: `person.name = "Evan Bacon"`
+- B: `person.age = 21`
+- C: `delete person.name`
+- D: `Object.assign(person, { age: 21 })`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: A
+
+使用 `Object.seal` 我们可以防止新属性 _被添加_，或者存在属性 _被移除_.
+
+然而，你仍然可以对存在属性进行更改。
+
+</p>
+</details>
+
+---
+
+### 以下哪一项会对对象 `person` 有副作用？
+
+```javascript
+const person = {
+	name: "Lydia Hallie",
+	address: {
+		street: "100 Main St"
+	}
+};
+
+Object.freeze(person);
+```
+
+- A: `person.name = "Evan Bacon"`
+- B: `delete person.address`
+- C: `person.address.street = "101 Main St"`
+- D: `person.pet = { name: "Mara" }`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+使用方法 `Object.freeze` 对一个对象进行 _冻结_。不能对属性进行添加，修改，删除。
+
+然而，它仅 对对象进行 _浅_ 冻结，意味着只有 对象中的 _直接_ 属性被冻结。如果属性是另一个 object，像案例中的 `address`，`address` 中的属性没有被冻结，仍然可以被修改。
+
+</p>
+</details>
+
+---
+
+### 输出什么？
+
+```javascript
+class Counter {
+  #number = 10
+
+  increment() {
+    this.#number++
+  }
+
+  getNum() {
+    return this.#number
+  }
+}
+
+const counter = new Counter()
+counter.increment()
+
+console.log(counter.#number)
+```
+
+- A: `10`
+- B: `11`
+- C: `undefined`
+- D: `SyntaxError`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: D
+
+在 ES2020 中，通过 `#` 我们可以给 class 添加私有变量。在 class 的外部我们无法获取该值。当我们尝试输出 `counter.#number`，语法错误被抛出：我们无法在 class `Counter` 外部获取它!
+
+</p>
+</details>
+
+---
+
+### 我们需要向对象 `person` 添加什么，以致执行 `[...person]` 时获得形如 `["Lydia Hallie", 21]` 的输出？
+
+```javascript
+const person = {
+  name: "Lydia Hallie",
+  age: 21
+}
+
+[...person] // ["Lydia Hallie", 21]
+```
+
+- A: 不需要，对象默认就是可迭代的
+- B: `*[Symbol.iterator]() { for (let x in this) yield* this[x] }`
+- C: `*[Symbol.iterator]() { for (let x in this) yield* Object.values(this) }`
+- D: `*[Symbol.iterator]() { for (let x in this) yield this }`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+对象默认并不是可迭代的。如果迭代规则被定义，则一个对象是可迭代的（An iterable is an iterable if the iterator protocol is present）。我们可以通过添加迭代器symbol `[Symbol.iterator]` 来定义迭代规则，其返回一个 generator 对象，比如说构建一个 generator 函数 `*[Symbol.iterator]() {}`。如果我们想要返回数组 `["Lydia Hallie", 21]`: `yield* Object.values(this)`，这个 generator 函数一定要 yield 对象 `person` 的`Object.values`。
+
+</p>
+</details>
+
+---
+
+### 输出是什么？
+
+```javascript
+function getFruit(fruits) {
+	console.log(fruits?.[1]?.[1])
+}
+
+getFruit([['🍊', '🍌'], ['🍍']])
+getFruit()
+getFruit([['🍍'], ['🍊', '🍌']])
+```
+
+- A: `null`, `undefined`, 🍌
+- B: `[]`, `null`, 🍌
+- C: `[]`, `[]`, 🍌
+- D: `undefined`, `undefined`, 🍌
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: D
+
+`?` 允许我们去选择性地访问对象内部更深层的嵌套属性。 我们尝试打印 `fruits` 数组索引值为 `1` 的子数组内部的索引值为 `1` 的元素。 如果在 `fruits` 数组索引值 为 `1` 的位置不存在元素，会直接返回 `undefined`。 如果 `fruits` 数组在索引值为 `1` 的位置存在元素，但是子数组在索引值为 `1` 的位置不存在元素，也会返回 `undefined`。
+
+首先，我们尝试打印 `[['🍊', '🍌'], ['🍍']]` 的子数组 `['🍍']` 的第2个元素。这个子数组只包含一个元素，也就意味着在索引值为 `1` 的位置不存在元素，所以返回的是 `undefined` 。
+
+其次，我们在没有传入任何参数调用了 `getFruits` 函数，也就意味着形参 `fruits` 的默认值为`undefined`。因为我们选择性地链接了 `fruits` 在索引值为 `1` 的元素，因为在索引值为 `1` 的位置不存在元素，因此返回的是 `undefined` 。
+
+最后，我们尝试打印 `['🍍'], ['🍊', '🍌']` 的子数组 `['🍊', '🍌']` 的第2个元素。子数组索引值为 `1`的位置为 `🍌` ，因此它被打印出了。
+
+</p>
+</details>
+
+---
+
+### 输出什么?
+
+```javascript
+const user = {
+	email: "e@mail.com",
+	password: "12345"
+}
+
+const updateUser = ({ email, password }) => {
+	if (email) {
+		Object.assign(user, { email })
+	}
+
+	if (password) {
+		user.password = password
+	}
+
+	return user
+}
+
+const updatedUser = updateUser({ email: "new@email.com" })
+
+console.log(updatedUser === user)
+```
+
+- A: `false`
+- B: `true`
+- C: `TypeError`
+- D: `ReferenceError`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: B
+
+ `updateUser` 函数更新user的 `email` 和 `password` 属性的值， 如果它们的值传入函数， 函数返回的就是 `user` 对象。 `updateUser` 函数的返回值是 `user` 对象，意味着updatedUser的值与 `user` 指向的是同一个 `user` 对象。`updatedUser === user` 为 `true`.
+
+</p>
+</details>
+
+---
+
+### 输出什么?
+
+```javascript
+const user = {
+	email: "my@email.com",
+	updateEmail: email => {
+		this.email = email
+	}
+}
+
+user.updateEmail("new@email.com")
+console.log(user.email)
+```
+
+- A: `my@email.com`
+- B: `new@email.com`
+- C: `undefined`
+- D: `ReferenceError`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: A
+
+`updateEmail` 函数是一个箭头函数，它没有和 `user` 对象绑定。这就意味着 `this` 关键字不会引用到 `user` 对象，但是会引用到全局对象。 `user` 对象内部的 `email` 的值不会更新。当打印 `user.email` 的时候， 原始值 `my@email.com` 被返回。
+
+</p>
+</details>
+
+---
+
+### 输出什么?
+
+```javascript
+const promise1 = Promise.resolve('First')
+const promise2 = Promise.resolve('Second')
+const promise3 = Promise.reject('Third')
+const promise4 = Promise.resolve('Fourth')
+
+const runPromises = async () => {
+	const res1 = await Promise.all([promise1, promise2])
+	const res2  = await Promise.all([promise3, promise4])
+	return [res1, res2]
+}
+
+runPromises()
+	.then(res => console.log(res))
+	.catch(err => console.log(err))
+```
+
+- A: `[['First', 'Second'], ['Fourth']]`
+- B: `[['First', 'Second'], ['Third', 'Fourth']]`
+- C: `[['First', 'Second']]`
+- D: `'Third'`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: D
+
+ `Promise.all` 方法可以并行式运行promise。如果其中一个promise失败了，`Promise.all` 方法会带上被reject的promise的值_rejects_。在这个例子中， `promise3` 带着 `"Third"` 值reject。我们在调用 `runPromises` 时在 `runPromises` 函数内部的 `catch` 方法去捕获任意error从而捕获到被reject的值。因为 `promise3` 带着 `"Third"` 被reject，所以只有 `"Third"` 打印。
+
+</p>
+</details>
+
+---
+
+###  哪个作为`method`的值可以打印`{ name: "Lydia", age: 22 }`?
+
+```javascript
+const keys = ["name", "age"]
+const values = ["Lydia", 22]
+
+const method = /* ?? */
+Object[method](keys.map((_, i) => {
+	return [keys[i], values[i]]
+})) // { name: "Lydia", age: 22 }
+```
+
+- A: `entries`
+- B: `values`
+- C: `fromEntries`
+- D: `forEach`
+
+<details><summary><b>答案</b></summary>
+<p>
+
+答案: C
+
+ `fromEntries` 方法可以将二维数组转换为对象。在每个子数组的第一个元素是key，在每个子数组的第二个元素是value。在这个例子中，我们映射了 `keys` 数组，它返回了一个数组，数组的第一个元素为keys数组当前索引的值，第二个元素为values数组当前索引的值。
+
+这样就创建了一个包含正确keys和values的子数组的数组，因此结果为`{ name: "Lydia", age: 22 }`。
 
 </p>
 </details>
