@@ -17,57 +17,57 @@
   - [深拷贝与浅拷贝](#深拷贝与浅拷贝)
   - [for……in和for……of](#forin和forof)
   - [js question](#js-question)
-    - [输出是什么？](#输出是什么)
-    - [输出是什么？](#输出是什么-1)
-    - [10. 当我们这么做时，会发生什么？](#10-当我们这么做时会发生什么)
-    - [12. 输出是什么？](#12-输出是什么)
-    - [15. 输出是什么？](#15-输出是什么)
-    - [17. 输出是什么？](#17-输出是什么)
-    - [输出是什么？](#输出是什么-2)
-    - [输出是什么？](#输出是什么-3)
-    - [输出是什么？](#输出是什么-4)
-    - [输出是什么？](#输出是什么-5)
-    - [输出是什么？](#输出是什么-6)
-    - [输出是什么?](#输出是什么-7)
-    - [返回值是什么?](#返回值是什么)
+    - [Q1输出是什么？](#q1输出是什么)
+    - [Q2输出是什么？](#q2输出是什么)
+    - [Q3当我们这么做时，会发生什么？](#q3当我们这么做时会发生什么)
+    - [Q4输出是什么？](#q4输出是什么)
+    - [Q5输出是什么？](#q5输出是什么)
+    - [Q6输出是什么？](#q6输出是什么)
+    - [Q7输出是什么？](#q7输出是什么)
+    - [Q8输出是什么？](#q8输出是什么)
+    - [Q9输出是什么？](#q9输出是什么)
+    - [Q10输出是什么？](#q10输出是什么)
+    - [Q11输出是什么？](#q11输出是什么)
+    - [Q12输出是什么?](#q12输出是什么)
+    - [Q13返回值是什么?](#q13返回值是什么)
   - [</details>](#details)
-    - [输出是什么?](#输出是什么-8)
-    - [`num`的值是什么?](#num的值是什么)
-    - [输出是什么?](#输出是什么-9)
-    - [输出是什么?](#输出是什么-10)
-    - [输出什么?](#输出什么)
-    - [如何能打印出`console.log`语句后注释掉的值？](#如何能打印出consolelog语句后注释掉的值)
-    - [输出什么?](#输出什么-1)
-    - [输出什么?](#输出什么-2)
-    - [输出什么?](#输出什么-3)
-    - [输出什么?](#输出什么-4)
-    - [输出什么?](#输出什么-5)
-    - [<a name=20190817></a>输出什么?](#输出什么-6)
-    - [输出什么?](#输出什么-7)
-    - [输出什么?](#输出什么-8)
-    - [输出什么?](#输出什么-9)
-    - [结果是什么?](#结果是什么)
-    - [输出什么?](#输出什么-10)
-          - [88. 输出什么?](#88-输出什么)
-      - [答案: B](#答案-b)
-    - [输出什么?](#输出什么-11)
-    - [输出什么?](#输出什么-12)
-    - [输出什么?](#输出什么-13)
-    - [输出什么?](#输出什么-14)
-    - [输出什么？](#输出什么-15)
-    - [输出什么？](#输出什么-16)
-    - [输出什么？](#输出什么-17)
-    - [我们怎样才能在 `index.js` 中调用 `sum.js?` 中的 `sum`？](#我们怎样才能在-indexjs-中调用-sumjs-中的-sum)
-    - [输出什么？](#输出什么-18)
-    - [以下哪一项会对对象 `person` 有副作用？](#以下哪一项会对对象-person-有副作用)
-    - [以下哪一项会对对象 `person` 有副作用？](#以下哪一项会对对象-person-有副作用-1)
-    - [输出什么？](#输出什么-19)
-    - [我们需要向对象 `person` 添加什么，以致执行 `[...person]` 时获得形如 `["Lydia Hallie", 21]` 的输出？](#我们需要向对象-person-添加什么以致执行-person-时获得形如-lydia-hallie-21-的输出)
-    - [输出是什么？](#输出是什么-11)
-    - [输出什么?](#输出什么-20)
-    - [输出什么?](#输出什么-21)
-    - [输出什么?](#输出什么-22)
-    - [哪个作为`method`的值可以打印`{ name: "Lydia", age: 22 }`?](#哪个作为method的值可以打印-name-lydia-age-22-)
+    - [Q14输出是什么?](#q14输出是什么)
+    - [Q15`num`的值是什么?](#q15num的值是什么)
+    - [Q16输出是什么?](#q16输出是什么)
+    - [Q17输出是什么?](#q17输出是什么)
+    - [Q18输出什么?](#q18输出什么)
+    - [Q19如何能打印出`console.log`语句后注释掉的值？](#q19如何能打印出consolelog语句后注释掉的值)
+    - [Q20输出什么?](#q20输出什么)
+    - [Q21输出什么?](#q21输出什么)
+    - [Q22输出什么?](#q22输出什么)
+    - [Q23输出什么?](#q23输出什么)
+    - [Q24输出什么?](#q24输出什么)
+    - [Q25输出什么?](#q25输出什么)
+    - [Q26输出什么?](#q26输出什么)
+    - [Q27输出什么?](#q27输出什么)
+    - [Q28输出什么?](#q28输出什么)
+    - [Q29结果是什么?](#q29结果是什么)
+    - [Q30输出什么?](#q30输出什么)
+    - [Q31输出什么?](#q31输出什么)
+    - [Q32输出什么?](#q32输出什么)
+    - [Q33输出什么?](#q33输出什么)
+    - [Q34输出什么?](#q34输出什么)
+  - [</details>](#details-1)
+    - [Q35输出什么?](#q35输出什么)
+    - [Q36输出什么？](#q36输出什么)
+    - [Q37输出什么？](#q37输出什么)
+    - [Q38输出什么？](#q38输出什么)
+    - [Q39我们怎样才能在 `index.js` 中调用 `sum.js?` 中的 `sum`？](#q39我们怎样才能在-indexjs-中调用-sumjs-中的-sum)
+    - [Q40输出什么？](#q40输出什么)
+    - [Q41以下哪一项会对对象 `person` 有副作用？](#q41以下哪一项会对对象-person-有副作用)
+    - [Q42以下哪一项会对对象 `person` 有副作用？](#q42以下哪一项会对对象-person-有副作用)
+    - [Q43输出什么？](#q43输出什么)
+    - [Q44我们需要向对象 `person` 添加什么，以致执行 `[...person]` 时获得形如 `["Lydia Hallie", 21]` 的输出？](#q44我们需要向对象-person-添加什么以致执行-person-时获得形如-lydia-hallie-21-的输出)
+    - [Q45输出是什么？](#q45输出是什么)
+    - [Q46输出什么?](#q46输出什么)
+    - [Q47输出什么?](#q47输出什么)
+    - [Q48输出什么?](#q48输出什么)
+    - [Q49哪个作为`method`的值可以打印`{ name: "Lydia", age: 22 }`?](#q49哪个作为method的值可以打印-name-lydia-age-22-)
 - [Css](#css)
   - [BFC](#bfc)
   - [圣杯布局与双飞翼布局](#圣杯布局与双飞翼布局)
@@ -687,7 +687,7 @@ $('#upJQuery').on('click', function() {
     }// name: wujunchuan    age: 22    locate: [object Object]
     ```
 ## js question
-### 输出是什么？
+### Q1输出是什么？
 ```javascript
 function sayHi() {
   console.log(name)
@@ -717,7 +717,7 @@ sayHi()
 </details>
 
 ---
-### 输出是什么？
+### Q2输出是什么？
 
 ```javascript
 class Chameleon {
@@ -752,7 +752,7 @@ freddie.colorChange('orange')
 
 ---
 
-### 10. 当我们这么做时，会发生什么？
+### Q3当我们这么做时，会发生什么？
 
 ```javascript
 function bark() {
@@ -780,7 +780,7 @@ bark.animal = 'dog'
 </details>
 
 ---
-### 12. 输出是什么？
+### Q4输出是什么？
 
 ```javascript
 function Person(firstName, lastName) {
@@ -813,7 +813,7 @@ console.log(sarah)
 </details>
 
 ---
-### 15. 输出是什么？
+### Q5输出是什么？
 
 ```javascript
 function sum(a, b) {
@@ -841,7 +841,7 @@ JavaScript 是一种**动态类型语言**：我们不指定某些变量的类�
 </details>
 
 ---
-### 17. 输出是什么？
+### Q6输出是什么？
 
 ```javascript
 function getPersonInfo(one, two, three) {
@@ -871,7 +871,7 @@ getPersonInfo`${person} is ${age} years old`
 </details>
 
 ---
-### 输出是什么？
+### Q7输出是什么？
 
 ```javascript
 const a = {}
@@ -904,7 +904,7 @@ console.log(a[b])
 </details>
 
 ---
-### 输出是什么？
+### Q8输出是什么？
 
 ```javascript
 const numbers = [1, 2, 3]
@@ -932,7 +932,7 @@ console.log(numbers)
 </details>
 
 ---
-### 输出是什么？
+### Q9输出是什么？
 
 ```javascript
 (() => {
@@ -968,7 +968,7 @@ console.log(numbers)
 </details>
 
 ---
-### 输出是什么？
+### Q10输出是什么？
 
 ```javascript
 array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
@@ -1002,7 +1002,7 @@ array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
 </details>
 
 ---
-### 输出是什么？
+### Q11输出是什么？
 
 ```javascript
 [...'Lydia']
@@ -1025,7 +1025,7 @@ string 类型是可迭代的。扩展运算符将迭代的每个字符映射成�
 
 ---
 
-### 输出是什么?
+### Q12输出是什么?
 
 ```javascript
 function* generator(i) {
@@ -1061,7 +1061,7 @@ console.log(gen.next().value);
 
 ---
 
-### 返回值是什么?
+### Q13返回值是什么?
 
 ```javascript
 const firstPromise = new Promise((res, rej) => {
@@ -1092,7 +1092,7 @@ Promise.race([firstPromise, secondPromise]).then(res => console.log(res));//['on
 </details>
 ---
 
-### 输出是什么?
+### Q14输出是什么?
 
 ```javascript
 let person = { name: "Lydia" };
@@ -1132,7 +1132,7 @@ console.log(members);
 
 ---
 
-### `num`的值是什么?
+### Q15`num`的值是什么?
 
 ```javascript
 const num = parseInt("7*6", 10);
@@ -1157,7 +1157,7 @@ const num = parseInt("7*6", 10);
 
 ---
 
-### 输出是什么?
+### Q16输出是什么?
 
 ```javascript
 // counter.js
@@ -1193,7 +1193,7 @@ console.log(myCounter);
 
 ---
 
-### 输出是什么?
+### Q17输出是什么?
 
 ```javascript
 let num = 10;
@@ -1227,7 +1227,7 @@ console.log(num2);
 
 ---
 
-### 输出什么?
+### Q18输出什么?
 
 ```javascript
 // index.js
@@ -1259,7 +1259,7 @@ export const sum = (a, b) => a + b;
 
 ---
 
-### 如何能打印出`console.log`语句后注释掉的值？
+### Q19如何能打印出`console.log`语句后注释掉的值？
 
 ```javascript
 function* startGame() {
@@ -1295,7 +1295,7 @@ console.log(/* 2 */); // JavaScript loves you back ❤️
 
 ---
 
-### 输出什么?
+### Q20输出什么?
 
 ```javascript
 async function getData() {
@@ -1329,7 +1329,7 @@ console.log(data);
 
 ---
 
-### 输出什么?
+### Q21输出什么?
 
 ```javascript
 function checkAge(age) {
@@ -1362,7 +1362,7 @@ console.log(checkAge(21))
 
 ---
 
-### 输出什么?
+### Q22输出什么?
 
 ```javascript
 function giveLydiaPizza() {
@@ -1392,7 +1392,7 @@ console.log(giveLydiaChocolate.prototype)
 
 ---
 
-### 输出什么?
+### Q23输出什么?
 
 ```javascript
 const person = {
@@ -1428,7 +1428,7 @@ for (const [x, y] of Object.entries(person)) {
 
 ---
 
-###  输出什么?
+### Q24输出什么?
 
 ```javascript
 function getItems(fruitList, ...args, favoriteFruit) {
@@ -1464,7 +1464,7 @@ getItems(["banana", "apple"], "pear", "orange")
 
 ---
 
-### <a name=20190817></a>输出什么?
+### Q25输出什么?
 
 ```javascript
 function nums(a, b) {
@@ -1508,7 +1508,7 @@ console.log(nums(1, 2))
 
 ---
 
-### 输出什么?
+### Q26输出什么?
 
 ```javascript
 class Person {
@@ -1546,7 +1546,7 @@ console.log(member.name)
 
 ---
 
-### 输出什么?
+### Q27输出什么?
 
 ```javascript
 const getList = ([x, ...y]) => [x, y]
@@ -1587,7 +1587,7 @@ console.log(getUser(user))
 
 ---
 
-### 输出什么?
+### Q28输出什么?
 
 ```javascript
 // 🎉✨ This is my 100th question! ✨🎉
@@ -1616,7 +1616,7 @@ You should${'' && `n't`} see a therapist after so much JavaScript lol`
 
 ---
 
-### 结果是什么?
+### Q29结果是什么?
 
 ```javascript
 Promise.resolve(5)
@@ -1641,7 +1641,7 @@ Promise.resolve(5)
 
 ---
 
-### 输出什么?
+### Q30输出什么?
 
 ```javascript
 function compareMembers(person1, person2 = person) {
@@ -1680,7 +1680,8 @@ compareMembers(person)
 
 ---
 
-###### 88. 输出什么?
+
+### Q31输出什么?
 
 ```javascript
 function sum(num1, num2 = num1) {
@@ -1698,7 +1699,7 @@ sum(10)
 <details><summary><b>答案</b></summary>
 <p>
 
-#### 答案: B
+答案: B
 
 您可以将默认参数的值设置为函数的另一个参数，只要另一个参数定义在其之前即可。 我们将值`10`传递给`sum`函数。 如果`sum`函数只接收1个参数，则意味着没有传递`num2`的值，这种情况下，`num1`的值等于传递的值`10`。 `num2`的默认值是`num1`的值，即`10`。 ```num1 + num2```返回`20`。
 
@@ -1717,7 +1718,8 @@ test(3, 4) // 3 4
 
 ---
 
-### 输出什么?
+
+### Q32输出什么?
 
 ```javascript
 function compareMembers(person1, person2 = person) {
@@ -1756,7 +1758,7 @@ compareMembers(person)
 
 ---
 
-### 输出什么?
+### Q33输出什么?
 
 
 ```javascript
@@ -1796,7 +1798,7 @@ JavaScript解释（或取消装箱）语句。 当我们使用方括号表示法
 
 ---
 
-### 输出什么?
+### Q34输出什么?
 
 ```javascript
 const config = {
@@ -1820,10 +1822,11 @@ console.log(config.language);
 答案: D
 
 方法 `language` 是一个 `setter`。Setters 并不保存一个实际值，它们的使命在于 _修改_ 属性。当调用方法 `setter`， 返回 `undefined`。
-
+</p>
+</details>
 ---
 
-### 输出什么?
+### Q35输出什么?
 
 ```javascript
 const add = x => y => z => {
@@ -1851,7 +1854,7 @@ add(4)(5)(6);
 
 ---
 
-###  输出什么？
+###  Q36输出什么？
 
 ```javascript
 async function* range(start, end) {
@@ -1885,7 +1888,7 @@ async function* range(start, end) {
 
 ---
 
-### 输出什么？
+### Q37输出什么？
 
 ```javascript
 const myFunc = ({ x, y, z }) => {
@@ -1912,7 +1915,7 @@ myFunc(1, 2, 3);
 
 ---
 
-### 输出什么？
+### Q38输出什么？
 
 ```javascript
 const name = "Lydia Hallie";
@@ -1944,7 +1947,7 @@ console.log(isNaN(age));
 
 ---
 
-### 我们怎样才能在 `index.js` 中调用 `sum.js?` 中的 `sum`？
+### Q39我们怎样才能在 `index.js` 中调用 `sum.js?` 中的 `sum`？
 
 ```javascript
 // sum.js
@@ -2002,7 +2005,7 @@ console.log(info);
 
 ---
 
-### 输出什么？
+### Q40输出什么？
 
 ```javascript
 const handler = {
@@ -2039,7 +2042,7 @@ person.name;
 
 ---
 
-### 以下哪一项会对对象 `person` 有副作用？
+### Q41以下哪一项会对对象 `person` 有副作用？
 
 ```javascript
 const person = { name: "Lydia Hallie" };
@@ -2066,7 +2069,7 @@ Object.seal(person);
 
 ---
 
-### 以下哪一项会对对象 `person` 有副作用？
+### Q42以下哪一项会对对象 `person` 有副作用？
 
 ```javascript
 const person = {
@@ -2098,7 +2101,7 @@ Object.freeze(person);
 
 ---
 
-### 输出什么？
+### Q43输出什么？
 
 ```javascript
 class Counter {
@@ -2136,7 +2139,7 @@ console.log(counter.#number)
 
 ---
 
-### 我们需要向对象 `person` 添加什么，以致执行 `[...person]` 时获得形如 `["Lydia Hallie", 21]` 的输出？
+### Q44我们需要向对象 `person` 添加什么，以致执行 `[...person]` 时获得形如 `["Lydia Hallie", 21]` 的输出？
 
 ```javascript
 const person = {
@@ -2164,7 +2167,7 @@ const person = {
 
 ---
 
-### 输出是什么？
+### Q45输出是什么？
 
 ```javascript
 function getFruit(fruits) {
@@ -2199,7 +2202,7 @@ getFruit([['🍍'], ['🍊', '🍌']])
 
 ---
 
-### 输出什么?
+### Q46输出什么?
 
 ```javascript
 const user = {
@@ -2241,7 +2244,7 @@ console.log(updatedUser === user)
 
 ---
 
-### 输出什么?
+### Q47输出什么?
 
 ```javascript
 const user = {
@@ -2272,7 +2275,7 @@ console.log(user.email)
 
 ---
 
-### 输出什么?
+### Q48输出什么?
 
 ```javascript
 const promise1 = Promise.resolve('First')
@@ -2308,7 +2311,7 @@ runPromises()
 
 ---
 
-###  哪个作为`method`的值可以打印`{ name: "Lydia", age: 22 }`?
+### Q49哪个作为`method`的值可以打印`{ name: "Lydia", age: 22 }`?
 
 ```javascript
 const keys = ["name", "age"]
